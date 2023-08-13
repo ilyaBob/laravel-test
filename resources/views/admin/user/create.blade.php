@@ -33,7 +33,7 @@
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-2 col-form-label">Почта пользователя</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="Введите email" value="{{old('email')}}">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Введите email" value="{{old('email')}}">
                                         @error('email')
                                         <div class="alert alert-danger mt-3">{{$message}}</div>
                                         @enderror
@@ -45,6 +45,16 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="password" id="password" placeholder="Введите пароль" value="{{old('password')}}">
                                         @error('password')
+                                        <div class="alert alert-danger mt-3">{{$message}}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="role" class="col-sm-2 col-form-label">Роль</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="role" id="role" placeholder="Введите роль" value="{{old('role')}}">
+                                        @error('role')
                                         <div class="alert alert-danger mt-3">{{$message}}</div>
                                         @enderror
                                     </div>

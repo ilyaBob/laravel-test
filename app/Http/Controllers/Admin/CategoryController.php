@@ -48,6 +48,10 @@ class CategoryController extends Controller
             "isPublished" => ""
         ]);
 
+        if(!isset($data["isPublished"])){
+            $data["isPublished"] = 0;
+        }
+
         $id->update($data);
 
         return redirect()->route("admin.category.index");

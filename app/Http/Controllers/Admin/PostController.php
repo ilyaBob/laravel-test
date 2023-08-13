@@ -30,6 +30,7 @@ class PostController extends Controller
     {
         $data = $request->validated();
         $data["prev_image"] = Storage::disk("public")->put("/image", $data["prev_image"]);
+
         Post::create($data);
         return redirect()->route("admin.post.index");
     }
@@ -44,13 +45,18 @@ class PostController extends Controller
     public function update(Post $id, UpdateReques $request)
     {
         $data = $request->validated();
+
         if (array_key_exists("prev_image", $data)) {
             $data["prev_image"] = Storage::disk("public")->put("/image", $data["prev_image"]);
         }
+        if (!isset($data["isPublished"])) {
+            $data["isPublished"] = 0;
+        }
+
+
         $id->update($data);
 
         return redirect()->route("admin.post.index");
-
     }
 
     public function destroy()

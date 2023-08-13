@@ -28,9 +28,9 @@ class UserController extends Controller
             'email' => "string|unique:users",
             'password' => "required|string",
             "isPublished" => "",
+            "role" => ""
         ]);
 
-//        dd($data);
         User::create($data);
         return redirect()->route('admin.user.index');
     }
