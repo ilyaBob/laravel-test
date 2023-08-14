@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use \App\Http\Requests\Category\PostRequest;
+use App\Http\Requests\Category\UpdateReques;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -11,7 +13,6 @@ class CategoryController extends Controller
 
     public function index()
     {
-       // $categories = Category::paginate(5);
         $categories = Category::all();
 
         return view("admin.category.index", compact("categories"));
@@ -22,14 +23,9 @@ class CategoryController extends Controller
         return view("admin.category.create");
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $data = $request->validate([
-            "title" => "required|unique:categories",
-            "sort" => "required",
-            "isPublished" => ""
-        ]);
-
+        $data = $request->validated();
         Category::create($data);
         return redirect()->route('admin.category.index');
     }
@@ -40,18 +36,13 @@ class CategoryController extends Controller
         return view("admin.category.edit", compact("category"));
 
     }
-    public function update(Category $id, Request $request){
+    public function update(Category $id, UpdateReques $request){
 
-        $data = $request->validate([
-            "title" => "required",
-            "sort" => "required",
-            "isPublished" => ""
-        ]);
+        $data = $request->validated();
 
         if(!isset($data["isPublished"])){
             $data["isPublished"] = 0;
         }
-
         $id->update($data);
 
         return redirect()->route("admin.category.index");

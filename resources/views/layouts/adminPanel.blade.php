@@ -98,7 +98,8 @@
                     <li class="nav-header">Блог</li>
                     <li class="nav-item">
                         <a href="{{route("admin.category.index")}}" class="nav-link">
-                            <i class="nav-icon far fa-image "></i>
+                            <i class="nav-icon 	fas fa-cat "></i>
+
                             <p>
                                 Категории
                             </p>
@@ -107,7 +108,7 @@
 
                     <li class="nav-item">
                         <a href="{{route("admin.post.index")}}" class="nav-link">
-                            <i class="nav-icon far fa-image "></i>
+                            <i class="nav-icon 	fas fa-file "></i>
                             <p>
                                 Посты
                             </p>
@@ -117,7 +118,7 @@
                     <li class="nav-header">Пользователи</li>
                     <li class="nav-item">
                         <a href="{{route("admin.user.index")}}" class="nav-link">
-                            <i class="nav-icon far fa-image "></i>
+                            <i class="nav-icon far fa-address-card "></i>
                             <p>
                                 Пользователи
                             </p>

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "Главная ";
+    return view("main.index");
 })->name("main");
 
 Route::middleware(["auth", "admin"])->group(function () {
